@@ -16,8 +16,11 @@ namespace CalculatorLibrary
 
             var operations = new List<string>()
             {
-                "sum - сумма", "sub - разность", "div - деление", "sqrt - корень степени n"
+                "sum - сумма", "sub - разность", "div - деление", "sqrt - корень степени n","get - список операций"
             };
+
+            Calculate calculate = new Calculate();
+
 
             if (args.Length > 0)
             {
@@ -35,20 +38,26 @@ namespace CalculatorLibrary
 
                 oper = Console.ReadLine();
 
-                Console.WriteLine("Введите данные в одну строку, разделяя числа пробелом");
-                var data = Console.ReadLine().Split(' ').Select(d => Convert.ToDouble(d)).ToArray();
-                x = data[0];
-                y = data.Length > 1 ? data[1] : 0;
+                if (oper == "get")
+                {
+                    calculate.Get(oper);
+                }
+                else
+                {
+                    Console.WriteLine("Введите данные в одну строку, разделяя числа пробелом");
+                    var data = Console.ReadLine().Split(' ').Select(d => Convert.ToDouble(d)).ToArray();
+                    x = data[0];
+                    y = data.Length > 1 ? data[1] : 0;
+
+                    Double result = double.NaN;
+                    result = calculate.Exec(oper, new[] { x.ToString(), y.ToString() });
+                    Console.WriteLine($"{oper}({x}, {y}) = {result}");
+                }
+                
             }
+                   
 
-            Double result = double.NaN;
-
-            Calculate calculate = new Calculate();
-
-            result = calculate.Exec(oper, new[] { x.ToString(), y.ToString() });
-            
-
-            Console.WriteLine($"{oper}({x}, {y}) = {result}");
+            //Console.WriteLine($"{oper}({x}, {y}) = {result}");
 
             Console.ReadKey();
         }
