@@ -1,7 +1,6 @@
 ﻿using CalculatorLibrary;
 using System.Linq;
 using System.Collections.Generic;
-using System.Text;
 using CalculatorLibrary.Operations;
 using System.Reflection;
 using System;
@@ -36,7 +35,6 @@ namespace ConsoleCalculator
                 }
             }
 
-
             var sumType = typeof(SumOperation);
             sumType.GetMethods();
             sumType.GetInterfaces();//рефлексия
@@ -44,6 +42,25 @@ namespace ConsoleCalculator
         }
          
         private IList<IOperation> Operations;
+        
+        public double Get(string operationName)
+        {
+            
+            IOperation oper;
+
+            oper = Operations.FirstOrDefault(it => it.Name == operationName);
+            
+            if (oper == null)
+            {
+                return double.NaN;
+            }
+
+            foreach (var var in Operations)
+            {
+                Console.WriteLine(var);
+            }
+            return double.NaN;
+        }
 
 
         public double Exec(string operationName, string[] args)
@@ -55,9 +72,9 @@ namespace ConsoleCalculator
             //    return it.Name == operationName;
             //}
 
-            oper = Operations.FirstOrDefault(it => it.Name == operationName);
-
             //найти операцию в списке операций
+
+            oper = Operations.FirstOrDefault(it => it.Name == operationName);
 
             //если не удалось найти возвращаем NaN
 
@@ -77,7 +94,7 @@ namespace ConsoleCalculator
             }
             else
             {
-                //иначе выодим результат
+                //иначе выводим результат
                 return result.Result;
             }
 

@@ -15,5 +15,6 @@ namespace CalculatorLibrary
         string Name { get; }
 
         IOperationResult Exec(string[] args);
+
     }
 }
