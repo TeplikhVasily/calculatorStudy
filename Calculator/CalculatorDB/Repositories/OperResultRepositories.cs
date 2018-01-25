@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CalculatorDB.Models;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Data;
 
 namespace CalculatorDB.Repositoris
 {
@@ -15,6 +16,8 @@ namespace CalculatorDB.Repositoris
 
         //todo вынести в настройки
         private string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\studynet\Calculator\CalculatorDB\AppData\CalculatorDB.mdf;Integrated Security=True";
+
+        private IList<OperationResult> Operations;
 
         public void Delete(long Id)
         {
@@ -28,7 +31,31 @@ namespace CalculatorDB.Repositoris
 
         public IList<OperationResult> GetAll()
         {
-            throw new NotImplementedException();
+            Operations = new List<OperationResult>();
+
+            string queryString = "SELECT *";
+            using (var connection = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
+
+                DataSet operations = new DataSet();
+
+                adapter.Fill(operations);
+
+                //IList<string> Oper = (from r in operations.Tables["Default"].AsEnumerable()
+
+                //   select r.Field<string>("Id") + " " +
+                //   r.Field<string>("OperationId") + " " +
+                //   r.Field<string>("Args") + " " +
+                //   r.Field<string>("Result") + " " +
+                //   r.Field<string>("ExecutionTime") + " " +
+                //   r.Field<string>("CreationDate") + " " +
+                //   r.Field<string>("Error")).ToList();
+
+                Operations.Insert(1, Oper);
+
+                return Operations;
+            }
         }
 
         public IList<OperationResult> GetByOperation(long Id)

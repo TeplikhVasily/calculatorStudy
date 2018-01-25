@@ -23,23 +23,6 @@ namespace DesktopCalc
 
         }
 
-
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             if (itOperations.SelectedItem.ToString() == null)
@@ -49,10 +32,9 @@ namespace DesktopCalc
 
             var result = Calculate.Exec(oper, textBox1.Text.Split(' '));
 
-            label1.Text = result.ToString();
+            lbResult.Text = result.ToString();
 
             #region Save
-
 
             var or = new OperationResult()
             {
@@ -67,13 +49,18 @@ namespace DesktopCalc
 
 
 
-        var openResultRepositiries = new OperResultRepositories();
+            var openResultRepositiries = new OperResultRepositories();
 
-        openResultRepositiries.Save(or);
+            openResultRepositiries.Save(or);
 
 
 
             #endregion
         }
-}
+
+        private void BtHistory_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
