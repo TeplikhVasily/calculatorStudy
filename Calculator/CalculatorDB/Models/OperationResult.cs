@@ -20,7 +20,7 @@ namespace CalculatorDB.Models
         /// Продолжительность расчета, мс
         /// </summary>
 
-        public long ExecqtionTime { get; set;  }
+        public long ExecutionTime { get; set;  }
 
         public DateTime CreationDate { get; set; }
 

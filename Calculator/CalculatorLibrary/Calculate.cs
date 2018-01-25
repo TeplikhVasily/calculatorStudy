@@ -19,7 +19,7 @@ namespace ConsoleCalculator
             // Операции из текущей сборки
             LoadOperation(curAssembly);
             //Операции сторонних разработчиков
-            var pathExtinsion = Path.Combine(Environment.CurrentDirectory + "extensions");
+            var pathExtinsion = Path.Combine(Environment.CurrentDirectory + "\\exct");
 
             //Если отсутствует дирректория 
             if (Directory.Exists(pathExtinsion))
@@ -32,7 +32,7 @@ namespace ConsoleCalculator
                 }
             }
         }
-   
+
         private void LoadOperation(Assembly assembly)
         {
             var types = assembly.GetTypes();
@@ -106,7 +106,7 @@ namespace ConsoleCalculator
         }
 
 
-
+        #region Старое 
         [Obsolete("НЕ ИСПОЛЬЗОВАТЬ!")]
         public double Sum(double x, double y)
         {
@@ -124,5 +124,6 @@ namespace ConsoleCalculator
         {
             return x / y;
         }
+        #endregion
     }
 }

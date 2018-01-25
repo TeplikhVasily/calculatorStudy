@@ -58,7 +58,7 @@ namespace DesktopCalc
             {
                 OperationId = itOperations.SelectedIndex,
                 Result = result,
-                ExecqtionTime = new Random().Next(100, 4000),
+                ExecutionTime = new Random().Next(100, 4000),
                 Error = "",
                 Args = textBox1.Text.Trim()
 
