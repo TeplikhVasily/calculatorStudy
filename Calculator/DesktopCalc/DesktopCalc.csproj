@@ -79,9 +79,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CalculatorDB\CalculatorDB.csproj">
+      <Project>{1B385820-FD0E-411C-B7DB-8DCCC36A9E11}</Project>
+      <Name>CalculatorDB</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CalculatorLibrary\CalculatorLibrary.csproj">
-      <Project>{38f660e9-28b7-453f-b0a9-55ec94d23981}</Project>
+      <Project>{38F660E9-28B7-453F-B0A9-55EC94D23981}</Project>
       <Name>CalculatorLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleCalculator\ConsoleCalculator.csproj">
+      <Project>{d7a8cbbb-2644-42a0-835f-357a4a87916a}</Project>
+      <Name>ConsoleCalculator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

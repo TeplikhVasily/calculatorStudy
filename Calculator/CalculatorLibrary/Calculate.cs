@@ -17,7 +17,7 @@ namespace ConsoleCalculator
 
             var curAssembly = Assembly.GetExecutingAssembly();
             // Операции из текущей сборки
-            
+            LoadOperation(curAssembly);
             //Операции сторонних разработчиков
             var pathExtinsion = Path.Combine(Environment.CurrentDirectory + "extensions");
 
@@ -36,6 +36,7 @@ namespace ConsoleCalculator
         private void LoadOperation(Assembly assembly)
         {
             var types = assembly.GetTypes();
+            var typeOperation = typeof(IOperation);
 
             foreach (var type in types)
             {
