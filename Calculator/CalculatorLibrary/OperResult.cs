@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalculatorLibrary
 {
-    class OperResult : IOperationResult
+    public class OperResult : IOperationResult
     {
 
         public OperResult(double result, string error)

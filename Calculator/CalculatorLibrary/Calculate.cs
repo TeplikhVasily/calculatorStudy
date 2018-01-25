@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CalculatorLibrary.Operations;
 using System.Reflection;
 using System;
+using System.IO;
 
 namespace ConsoleCalculator
 {
@@ -14,10 +15,27 @@ namespace ConsoleCalculator
         {
             Operations = new List<IOperation>();
 
-
             var curAssembly = Assembly.GetExecutingAssembly();
+            // Операции из текущей сборки
+            
+            //Операции сторонних разработчиков
+            var pathExtinsion = Path.Combine(Environment.CurrentDirectory + "extensions");
 
-            var types = curAssembly.GetTypes();
+            //Если отсутствует дирректория 
+            if (Directory.Exists(pathExtinsion))
+            {
+                var assemblies = Directory.GetFiles(pathExtinsion, "*.dll");
+
+                foreach (var fileName in assemblies)
+                {
+                    LoadOperation(Assembly.LoadFile(fileName));
+                }
+            }
+        }
+   
+        private void LoadOperation(Assembly assembly)
+        {
+            var types = assembly.GetTypes();
 
             foreach (var type in types)
             {
@@ -38,28 +56,13 @@ namespace ConsoleCalculator
             var sumType = typeof(SumOperation);
             sumType.GetMethods();
             sumType.GetInterfaces();//рефлексия
-
         }
-         
+
         private IList<IOperation> Operations;
-        
-        public double Get(string operationName)
+
+        public string[] GetOperationNames()
         {
-            
-            IOperation oper;
-
-            oper = Operations.FirstOrDefault(it => it.Name == operationName);
-            
-            if (oper == null)
-            {
-                return double.NaN;
-            }
-
-            foreach (var var in Operations)
-            {
-                Console.WriteLine(var);
-            }
-            return double.NaN;
+            return Operations.Select(o => o.Name).ToArray();
         }
 
 
