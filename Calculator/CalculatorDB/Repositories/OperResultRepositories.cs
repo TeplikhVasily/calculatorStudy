@@ -38,9 +38,12 @@ namespace CalculatorDB.Repositoris
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
 
-                DataSet operations = new DataSet();
+                DataTable operations = new DataTable();
 
                 adapter.Fill(operations);
+
+                //Operations.Add(operations);
+
 
                 //IList<string> Oper = (from r in operations.Tables["Default"].AsEnumerable()
 
@@ -51,8 +54,6 @@ namespace CalculatorDB.Repositoris
                 //   r.Field<string>("ExecutionTime") + " " +
                 //   r.Field<string>("CreationDate") + " " +
                 //   r.Field<string>("Error")).ToList();
-
-                Operations.Insert(1, Oper);
 
                 return Operations;
             }

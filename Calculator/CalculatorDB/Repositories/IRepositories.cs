@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace CalculatorDB.Repositoris
 {
-    public interface IRepositories
+    public interface IRepositories<T>
     {
 
         //CRUD
 
-        OperationResult Get(long Id);
+        T Get(long Id);
 
-        void Save(OperationResult result);
+        void Save(T result);
 
         void Delete(long Id);
 
-        IList<OperationResult> GetByOperation(long Id);
+        IList<T> GetByOperation(long Id);
 
-        IList<OperationResult> GetAll();
+        IList<T> GetAll();
 
     }
 }

@@ -1,0 +1,16 @@
+﻿CREATE TABLE [dbo].[Operation]
+(
+  [Id] BIGINT NOT NULL PRIMARY KEY IDENTITY, 
+    [OwnerId] BIGINT NOT NULL, 
+    [Name] NVARCHAR(50) NULL, 
+)
+
+CREATE TABLE [dbo].[User]
+(
+  [Id] BIGINT NOT NULL PRIMARY KEY IDENTITY, 
+    [FirstName] NVARCHAR(50) NULL, 
+	[LastName] NVARCHAR(50) NULL, 
+	[Login] NVARCHAR(50) NULL, 
+	[Password] NVARCHAR(50) NULL, 
+
+)
