@@ -94,7 +94,7 @@ namespace ConsoleCalculator
             if (!string.IsNullOrWhiteSpace(result.Error))
             {
                 //выводим на экран
-                Console.WriteLine(result.Error);
+                //Console.WriteLine(result.Error);
             }
             else
             {

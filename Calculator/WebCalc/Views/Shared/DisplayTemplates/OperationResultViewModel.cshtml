@@ -1,0 +1,32 @@
+﻿@model WebCalc.Models.OperationResultViewModel
+
+
+<tr>
+
+    @Html.DisplayFor(m => m.Id)
+    <td>
+        @Html.LabelFor(m => m.OperationId)
+        @Html.DisplayFor(m => m.OperationId)
+    </td>
+    <td>
+        @Html.LabelFor(m => m.Args)
+        @Html.DisplayFor(m => m.Args)
+    </td>
+    <td>
+        @Html.LabelFor(m => m.Result)
+        @Html.DisplayFor(m => m.Result)
+    </td>
+    <td>
+        @Html.LabelFor(m => m.ExecutionTime)
+        @Html.DisplayFor(m => m.ExecutionTime)
+    </td>
+    <td>
+        @Html.LabelFor(m => m.CreationDate)
+        @Html.DisplayFor(m => m.CreationDate)
+    </td>
+    <td>
+        @Html.LabelFor(m => m.Error)
+        @Html.DisplayFor(m => m.Error)
+    </td>
+
+</tr>

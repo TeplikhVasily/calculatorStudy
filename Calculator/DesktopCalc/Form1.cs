@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using ConsoleCalculator;
 using CalculatorDB.Repositoris;
 using CalculatorDB.Models;
+using CalculatorDB.Repositories;
 
 namespace DesktopCalc
 {
@@ -42,18 +43,13 @@ namespace DesktopCalc
                 Result = result,
                 ExecutionTime = new Random().Next(100, 4000),
                 Error = "",
-                Args = textBox1.Text.Trim()
-
+                Args = textBox1.Text.Trim(),
+                CreationDate = DateTime.Now
             };
 
-
-
-
-            var openResultRepositiries = new OperResultRepositories();
-
-            openResultRepositiries.Save(or);
-
-
+            var operResultRepository = new BaseRepositories<OperationResult>();
+            var all = operResultRepository.GetAll();
+            operResultRepository.Save(or);
 
             #endregion
         }

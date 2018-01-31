@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace CalculatorDB.Models
 {
-    public class User
+    public class User : IEntity
     {
-
-
-
+        public long Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

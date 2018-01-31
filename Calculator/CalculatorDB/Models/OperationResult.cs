@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalculatorDB.Models
 {
-    public class OperationResult
+    public class OperationResult : IEntity
     {
         public long Id { get; set; }
 
