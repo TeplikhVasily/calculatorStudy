@@ -8,6 +8,7 @@ using WebCalc.Models;
 
 namespace WebCalc.Controllers
 {
+    [Authorize]
     public class CalcController : Controller
     {
         // GET: Calc
@@ -36,13 +37,17 @@ namespace WebCalc.Controllers
                 Result = result
             };
 
-
             return View("Index", model);
         }
 
         [HttpPost]
         public ActionResult ExecAjax(string operation, string args)
         {
+            if (string.IsNullOrWhiteSpace(args))
+            {
+                return Content("Укажите входные данные!");
+            }
+
             var calculate = new Calculate();
 
             var result = calculate.Exec(operation, args.Split(new[] { ' ', ',' }));
